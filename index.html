@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CAT-CRM">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>CAT-CRM Installer Demo</title>
+<meta name="theme-color" content="#0b0e12">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}
+
+/* Single dark instrument look: one phone-width column, amber kept to actions and status. */
+:root {
+  --paper:#0b0e12; --surface:#12161c; --ink:#edf0f3; --muted:#8b95a3; --rule:#242b34; --accent:#f0a93a; --accent-ink:#1a1204;
+  --display:'Inter Tight','Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  color-scheme: dark;
+}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:var(--display);-webkit-text-size-adjust:100%}
+.mono{font-family:var(--mono)}
+.app{width:100%;max-width:480px;margin:0 auto;min-height:100vh;box-sizing:border-box}
+.start{display:flex;flex-direction:column;padding-block:18px 32px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.start-top{display:flex;align-items:baseline;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+.mark{font-size:16px;font-weight:600;letter-spacing:-.3px}
+.tag,.eyebrow,.foot,.n{font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.tag{color:var(--muted)}
+.start-head{display:flex;flex-direction:column;gap:12px;padding-block:44px 32px}
+.eyebrow{color:var(--accent)}
+.start-head h1{margin:0;font-size:40px;font-weight:500;letter-spacing:-1.3px;line-height:1.05;text-wrap:balance}
+.start-head p{margin:0;font-size:16px;line-height:1.5;color:var(--muted);max-width:34ch}
+.choices{display:flex;flex-direction:column;gap:12px}
+.choices a{display:flex;align-items:center;gap:16px;padding:20px 18px;background:var(--surface);border:1px solid var(--rule);border-radius:12px;color:var(--ink);text-decoration:none;min-height:44px}
+.choices a:active{border-color:var(--accent)}
+.n{width:52px;flex-shrink:0;color:var(--accent)}
+.c{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+.c b{font-size:18px;font-weight:500;letter-spacing:-.3px}
+.c span{font-size:14px;color:var(--muted)}
+.choices svg{color:var(--muted);flex-shrink:0}
+.foot{margin-top:auto;padding-top:32px;color:var(--muted);line-height:1.6}
+a:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+textarea::placeholder{color:#737d8c}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(24px + env(safe-area-inset-bottom,0px));background:var(--surface);
+  border:1px solid var(--rule);color:var(--ink);padding:12px 16px;border-radius:10px;font-size:14px;z-index:20}
+@media (prefers-reduced-motion:no-preference){.screen:not([hidden]){animation:in .18s ease-out}@keyframes in{from{opacity:.4}to{opacity:1}}}
+</style>
+</head>
+<body>
+
+<section class="screen" id="v-start" hidden><div class="app start">
+  <div class="start-top"><span class="mark">CAT-CRM</span><span class="mono tag">Installer mode</span></div>
+  <div class="start-head">
+    <span class="mono eyebrow">Demo · sample content</span>
+    <h1>Pick a day to demo.</h1>
+    <p>The installer app opens differently depending on what is scheduled. Choose one to start.</p>
+  </div>
+  <nav class="choices" aria-label="Demo scenarios">
+    <a href="#job"><span class="mono n">1 job</span><span class="c"><b>One install today</b><span>Opens straight into the job page.</span></span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+    <a href="#picker"><span class="mono n">2 jobs</span><span class="c"><b>Two installs today</b><span>Opens on a menu to pick the job.</span></span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+    <a href="#calendar"><span class="mono n">0 jobs</span><span class="c"><b>No install today</b><span>Opens on the install calendar.</span></span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+  </nav>
+  <p class="mono foot">Tap CAT-CRM at the top of any screen to come back here.</p>
+</div></section>
+<section class="screen" id="v-job" hidden>
+
+<div class="app" style=" box-sizing: border-box; background: #0b0e12; color: #edf0f3; font-family: 'Inter Tight', system-ui, sans-serif; font-variant-numeric: tabular-nums; display: flex; flex-direction: column">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid #242b34">
+    <div style="display: flex; align-items: baseline; gap: 10px">
+      <a href="#start" aria-label="CAT-CRM, back to demo start" style="font-size: 16px; font-weight: 600; letter-spacing: -0.3px; color: #edf0f3; text-decoration: none">CAT-CRM</a>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3">Installer</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #8b95a3">Mon 09 Nov</span>
+      <span role="img" aria-label="Jackson" style="width: 32px; height: 32px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid #74d68c; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">J</span>
+    </div>
+  </header>
+
+  <section style="padding: 28px 20px 24px; display: flex; flex-direction: column; gap: 10px">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #f0a93a">Today's install · 1 of 1</span>
+    <h1 style="margin: 0; font-size: 32px; font-weight: 500; letter-spacing: -0.9px; line-height: 1.1">Dana Whitfield</h1>
+    <p style="margin: 0; font-size: 16px; line-height: 1.45; color: #8b95a3">1418 Linden Avenue<br>Maple Heights</p>
+    <div style="display: flex; gap: 8px; margin-top: 8px">
+      <span style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid #242b34; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: #8b95a3"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #8b95a3"></span><span data-pill-install>Install pending</span></span>
+      <span style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid #242b34; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: #8b95a3"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #8b95a3"></span><span data-pill-check>Check pending</span></span>
+    </div>
+  </section>
+
+  <section style="display: flex; align-items: flex-end; justify-content: space-between; padding: 20px; border-top: 1px solid #242b34; border-bottom: 1px solid #242b34">
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3">Arrival window</span>
+      <span style="font-size: 36px; font-weight: 500; letter-spacing: -1px; line-height: 1">8:00–10:00<span style="font-size: 16px; font-weight: 500; color: #8b95a3; margin-left: 6px; letter-spacing: 0">AM</span></span>
+    </div>
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b95a3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+  </section>
+
+  <section style="padding: 24px 20px 8px; display: flex; flex-direction: column">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3; margin-bottom: 8px">Job notes</span>
+    <div style="display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #242b34">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#edf0f3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M9 17V7h4a3 3 0 0 1 0 6H9"></path></svg>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #8b95a3">Parking</span>
+        <span style="font-size: 15px; line-height: 1.45">Park in the driveway, left side. Street is permit only.</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #242b34">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#edf0f3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px"><circle cx="6" cy="10" r="2"></circle><circle cx="10" cy="5.5" r="2"></circle><circle cx="14" cy="5.5" r="2"></circle><circle cx="18" cy="10" r="2"></circle><path d="M8 17.5c0-2.8 1.8-5 4-5s4 2.2 4 5c0 1.6-1.2 2.5-2.4 2.5-.7 0-1-.4-1.6-.4s-.9.4-1.6.4C9.2 20 8 19.1 8 17.5z"></path></svg>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #8b95a3">Pets</span>
+        <span style="font-size: 15px; line-height: 1.45">Two dogs, friendly. Keep the side gate shut.</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 14px; padding: 14px 0">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0a93a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px"><path d="M12 3l9.5 17h-19z"></path><path d="M12 10v4"></path><path d="M12 17.2v.1"></path></svg>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #8b95a3">Customer concern</span>
+        <span style="font-size: 15px; line-height: 1.45">No shoes past the front entry. Bring shoe covers.</span>
+      </div>
+    </div>
+  </section>
+
+  <div style="padding: 8px 20px 28px">
+    <a href="#plans" data-plans style="display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 16px; box-sizing: border-box; background: #12161c; border: 1px solid #242b34; border-radius: 10px; text-decoration: none; color: #edf0f3">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 9h18"></path><path d="M9 9v11"></path><path d="M13 13h5"></path><path d="M13 16h3"></path></svg>
+      <span style="flex: 1; font-size: 16px; font-weight: 500">Blueprints and plans</span>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b95a3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+    </a>
+  </div>
+
+  <section style="padding: 0 20px 28px; display: flex; flex-direction: column">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid #242b34">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3">Accessories</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b95a3">4 items</span>
+    </div>
+    
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #242b34">
+        <span style="font-size: 15px">Valet rod</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 14px">×2</span>
+      </div>
+    
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #242b34">
+        <span style="font-size: 15px">Laundry pullout</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 14px">×1</span>
+      </div>
+    
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #242b34">
+        <span style="font-size: 15px">Tie and belt rack</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 14px">×1</span>
+      </div>
+    
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #242b34">
+        <span style="font-size: 15px">Jewelry tray insert</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 14px">×1</span>
+      </div>
+    
+  </section>
+
+  <section style="padding: 0 20px 28px; display: flex; flex-direction: column">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid #242b34">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3">Required hardware</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b95a3">count</span>
+    </div>
+    
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #242b34">
+        <span style="font-size: 15px">Handles</span>
+        <span style="font-size: 20px; font-weight: 500; letter-spacing: -0.4px">14</span>
+      </div>
+    
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #242b34">
+        <span style="font-size: 15px">Bridges</span>
+        <span style="font-size: 20px; font-weight: 500; letter-spacing: -0.4px">6</span>
+      </div>
+    
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #242b34">
+        <span style="font-size: 15px">Shelf pins</span>
+        <span style="font-size: 20px; font-weight: 500; letter-spacing: -0.4px">48</span>
+      </div>
+    
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #242b34">
+        <span style="font-size: 15px">Rod brackets</span>
+        <span style="font-size: 20px; font-weight: 500; letter-spacing: -0.4px">4</span>
+      </div>
+    
+  </section>
+
+  <section style="padding: 0 20px 28px; display: flex; flex-direction: column; gap: 12px">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3">Colors</span>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="display: flex; flex-direction: column; gap: 12px; padding: 14px; background: #12161c; border: 1px solid #242b34; border-radius: 10px">
+        <span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 6px; background: #ece9e2; border: 1px solid #3a424d"></span>
+        <div style="display: flex; flex-direction: column; gap: 3px">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #8b95a3">Job color</span>
+          <span style="font-size: 15px; font-weight: 500">Winter White</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px; padding: 14px; background: #12161c; border: 1px solid #242b34; border-radius: 10px">
+        <span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 6px; background: #1c1d1f; border: 1px solid #3a424d"></span>
+        <div style="display: flex; flex-direction: column; gap: 3px">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #8b95a3">Hardware</span>
+          <span style="font-size: 15px; font-weight: 500">Matte Black</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin: 0 20px 28px; padding: 20px; background: #12161c; border: 1px solid #242b34; border-radius: 12px; display: flex; flex-direction: column; gap: 16px">
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3">Remaining balance</span>
+      <span style="font-size: 40px; font-weight: 500; letter-spacing: -1.2px; line-height: 1">$1,240.00</span>
+      <span style="font-size: 14px; color: #8b95a3">Collect by check.</span>
+    </div>
+    <button type="button" data-check-btn style="display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; border-radius: 8px; border: 1px solid #3a424d; background: transparent; color: #edf0f3; font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+      <span data-check-label>Mark check collected</span>
+    </button>
+  </section>
+
+  <section style="padding: 0 20px 28px; display: flex; flex-direction: column; gap: 12px">
+    <a href="#complete" style="display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; border-radius: 10px; background: #f0a93a; color: #1a1204; text-decoration: none; font-size: 17px; font-weight: 600; letter-spacing: -0.2px" data-install>Install complete</a>
+    <a href="#flag" style="display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; border-radius: 10px; border: 1px solid #242b34; color: #edf0f3; text-decoration: none; font-size: 15px; font-weight: 500">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"></path><path d="M5 4h11l-2 4 2 4H5"></path></svg>
+      Flag a problem
+    </a>
+  </section>
+
+  <a href="#calendar" style="margin-top: auto; display: flex; align-items: center; gap: 14px; padding: 22px 20px 30px; border-top: 1px solid #242b34; text-decoration: none; color: #edf0f3">
+    <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1.5"></rect><path d="M3 10h18"></path><path d="M8 3v4"></path><path d="M16 3v4"></path></svg>
+    <span style="flex: 1; display: flex; flex-direction: column; gap: 3px">
+      <span style="font-size: 15px; font-weight: 500">Install calendar</span>
+      <span style="font-size: 13px; color: #8b95a3">Upcoming installs for everyone</span>
+    </span>
+    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b95a3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+  </a>
+
+</div>
+</section><section class="screen" id="v-picker" hidden>
+
+<div class="app" style=" box-sizing: border-box; background: #0b0e12; color: #edf0f3; font-family: 'Inter Tight', system-ui, sans-serif; font-variant-numeric: tabular-nums; display: flex; flex-direction: column">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid #242b34">
+    <div style="display: flex; align-items: baseline; gap: 10px">
+      <a href="#start" aria-label="CAT-CRM, back to demo start" style="font-size: 16px; font-weight: 600; letter-spacing: -0.3px; color: #edf0f3; text-decoration: none">CAT-CRM</a>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3">Installer</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #8b95a3">Wed 11 Nov</span>
+      <span role="img" aria-label="Jackson" style="width: 32px; height: 32px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid #74d68c; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">J</span>
+    </div>
+  </header>
+
+  <section style="padding: 32px 20px 28px; display: flex; flex-direction: column; gap: 10px">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #f0a93a">Today · 2 installs</span>
+    <h1 style="margin: 0; font-size: 32px; font-weight: 500; letter-spacing: -0.9px; line-height: 1.1">Which job are you on?</h1>
+    <p style="margin: 0; font-size: 16px; line-height: 1.45; color: #8b95a3">Pick one to open its job page.</p>
+  </section>
+
+  <nav aria-label="Today's jobs" style="padding: 0 20px; display: flex; flex-direction: column; gap: 12px">
+    
+      <a href="#job" style="display: flex; gap: 16px; padding: 20px 18px; background: #12161c; border: 1px solid #242b34; border-radius: 12px; text-decoration: none; color: #edf0f3">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b95a3; padding-top: 4px">01</span>
+        <span style="flex: 1; display: flex; flex-direction: column; gap: 6px">
+          <span style="font-size: 20px; font-weight: 500; letter-spacing: -0.4px">Ada Okafor</span>
+          <span style="font-size: 14px; color: #8b95a3">62 Brook Hollow Road</span>
+          <span style="display: flex; align-items: center; gap: 8px; margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px">
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b95a3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            8:00–10:00 AM
+          </span>
+        </span>
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b95a3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="align-self: center"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+    
+      <a href="#job" style="display: flex; gap: 16px; padding: 20px 18px; background: #12161c; border: 1px solid #242b34; border-radius: 12px; text-decoration: none; color: #edf0f3">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b95a3; padding-top: 4px">02</span>
+        <span style="flex: 1; display: flex; flex-direction: column; gap: 6px">
+          <span style="font-size: 20px; font-weight: 500; letter-spacing: -0.4px">Erik Lindqvist</span>
+          <span style="font-size: 14px; color: #8b95a3">905 Garnet Street, Unit 4</span>
+          <span style="display: flex; align-items: center; gap: 8px; margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px">
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b95a3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            1:00–3:00 PM
+          </span>
+        </span>
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b95a3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="align-self: center"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+    
+  </nav>
+
+  <a href="#calendar" style="margin-top: auto; display: flex; align-items: center; gap: 14px; padding: 22px 20px 30px; border-top: 1px solid #242b34; text-decoration: none; color: #edf0f3">
+    <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1.5"></rect><path d="M3 10h18"></path><path d="M8 3v4"></path><path d="M16 3v4"></path></svg>
+    <span style="flex: 1; display: flex; flex-direction: column; gap: 3px">
+      <span style="font-size: 15px; font-weight: 500">Install calendar</span>
+      <span style="font-size: 13px; color: #8b95a3">Upcoming installs for everyone</span>
+    </span>
+    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b95a3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+  </a>
+
+</div>
+</section><section class="screen" id="v-calendar" hidden>
+
+<div class="app" style=" box-sizing: border-box; background: #0b0e12; color: #edf0f3; font-family: 'Inter Tight', system-ui, sans-serif; font-variant-numeric: tabular-nums; display: flex; flex-direction: column">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid #242b34">
+    <div style="display: flex; align-items: baseline; gap: 10px">
+      <a href="#start" aria-label="CAT-CRM, back to demo start" style="font-size: 16px; font-weight: 600; letter-spacing: -0.3px; color: #edf0f3; text-decoration: none">CAT-CRM</a>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3">Installer</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #8b95a3">Sun 08 Nov</span>
+      <span role="img" aria-label="Jackson" style="width: 32px; height: 32px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid #74d68c; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">J</span>
+    </div>
+  </header>
+
+  <section style="padding: 28px 20px 20px; display: flex; flex-direction: column; gap: 10px">
+    <span style="display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #f0a93a"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #f0a93a"></span>No install today</span>
+    <h1 style="margin: 0; font-size: 32px; font-weight: 500; letter-spacing: -0.9px; line-height: 1.1">Upcoming installs</h1>
+  </section>
+
+  <section style="padding: 0 20px 20px; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <span style="font-size: 17px; font-weight: 500">November 2026</span>
+      <div style="display: flex; gap: 4px">
+        <button type="button" aria-label="Previous month" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid #242b34; border-radius: 8px; color: #edf0f3; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg></button>
+        <button type="button" aria-label="Next month" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid #242b34; border-radius: 8px; color: #edf0f3; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div>
+    <div style="display: flex; gap: 18px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b95a3">
+      <span style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 14px; height: 4px; border-radius: 2px; background: #74d68c"></span>Jackson</span>
+      <span style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 14px; height: 4px; border-radius: 2px; background: #a98cf2"></span>Eric</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-top: 1px solid #242b34; border-left: 1px solid #242b34">
+      
+        <span style="padding: 8px 0; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b95a3; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34">S</span>
+      
+        <span style="padding: 8px 0; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b95a3; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34">M</span>
+      
+        <span style="padding: 8px 0; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b95a3; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34">T</span>
+      
+        <span style="padding: 8px 0; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b95a3; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34">W</span>
+      
+        <span style="padding: 8px 0; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b95a3; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34">T</span>
+      
+        <span style="padding: 8px 0; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b95a3; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34">F</span>
+      
+        <span style="padding: 8px 0; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b95a3; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34">S</span>
+      
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">1</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">2</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">3</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">4</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">5</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">6</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">7</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: #1d1810">
+          <span style="font-size: 13px; font-weight: 600; color: #edf0f3">8</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">9</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #74d68c"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">10</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #a98cf2"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">11</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #74d68c"></span>
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #74d68c"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">12</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #a98cf2"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">13</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #74d68c"></span>
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #a98cf2"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">14</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">15</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">16</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #74d68c"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">17</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #a98cf2"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">18</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #74d68c"></span>
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #a98cf2"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">19</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #74d68c"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">20</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #a98cf2"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">21</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">22</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">23</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #74d68c"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">24</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #74d68c"></span>
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #a98cf2"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">25</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">26</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">27</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">28</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">29</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #edf0f3">30</span>
+          <span style="display: flex; gap: 3px">
+            
+              <span aria-hidden="true" style="flex: 1; height: 4px; border-radius: 2px; background: #a98cf2"></span>
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">1</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">2</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">3</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">4</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+        <div style="height: 54px; box-sizing: border-box; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #242b34; border-bottom: 1px solid #242b34; background: transparent">
+          <span style="font-size: 13px; font-weight: 400; color: #737d8c">5</span>
+          <span style="display: flex; gap: 3px">
+            
+          </span>
+        </div>
+      
+    </div>
+  </section>
+
+  <section style="padding: 8px 20px 32px; display: flex; flex-direction: column">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3; padding-bottom: 10px; border-bottom: 1px solid #242b34">Next up · tap for details</span>
+    
+      <a href="#job" style="display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #242b34; text-decoration: none; color: #edf0f3">
+        <span style="width: 44px; display: flex; flex-direction: column; gap: 2px; font-family: 'JetBrains Mono', monospace">
+          <span style="font-size: 11px; color: #8b95a3">MON</span>
+          <span style="font-size: 18px; font-weight: 500">09</span>
+        </span>
+        <span style="flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0">
+          <span style="font-size: 15px; font-weight: 500">Dana Whitfield</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b95a3">8:00–10:00 AM</span>
+        </span>
+        <span style="display: flex; align-items: center; gap: 7px; padding: 5px 10px; border: 1px solid #242b34; border-radius: 999px; font-size: 13px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #74d68c"></span>Jackson</span>
+      </a>
+    
+      <a href="#job" style="display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #242b34; text-decoration: none; color: #edf0f3">
+        <span style="width: 44px; display: flex; flex-direction: column; gap: 2px; font-family: 'JetBrains Mono', monospace">
+          <span style="font-size: 11px; color: #8b95a3">TUE</span>
+          <span style="font-size: 18px; font-weight: 500">10</span>
+        </span>
+        <span style="flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0">
+          <span style="font-size: 15px; font-weight: 500">Marcus Brandt</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b95a3">9:00–11:00 AM</span>
+        </span>
+        <span style="display: flex; align-items: center; gap: 7px; padding: 5px 10px; border: 1px solid #242b34; border-radius: 999px; font-size: 13px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #a98cf2"></span>Eric</span>
+      </a>
+    
+      <a href="#job" style="display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #242b34; text-decoration: none; color: #edf0f3">
+        <span style="width: 44px; display: flex; flex-direction: column; gap: 2px; font-family: 'JetBrains Mono', monospace">
+          <span style="font-size: 11px; color: #8b95a3">WED</span>
+          <span style="font-size: 18px; font-weight: 500">11</span>
+        </span>
+        <span style="flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0">
+          <span style="font-size: 15px; font-weight: 500">Ada Okafor</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b95a3">8:00–10:00 AM</span>
+        </span>
+        <span style="display: flex; align-items: center; gap: 7px; padding: 5px 10px; border: 1px solid #242b34; border-radius: 999px; font-size: 13px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #74d68c"></span>Jackson</span>
+      </a>
+    
+      <a href="#job" style="display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #242b34; text-decoration: none; color: #edf0f3">
+        <span style="width: 44px; display: flex; flex-direction: column; gap: 2px; font-family: 'JetBrains Mono', monospace">
+          <span style="font-size: 11px; color: #8b95a3">WED</span>
+          <span style="font-size: 18px; font-weight: 500">11</span>
+        </span>
+        <span style="flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0">
+          <span style="font-size: 15px; font-weight: 500">Erik Lindqvist</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b95a3">1:00–3:00 PM</span>
+        </span>
+        <span style="display: flex; align-items: center; gap: 7px; padding: 5px 10px; border: 1px solid #242b34; border-radius: 999px; font-size: 13px"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #74d68c"></span>Jackson</span>
+      </a>
+    
+  </section>
+
+</div>
+</section><section class="screen" id="v-complete" hidden>
+
+<div class="app" style=" box-sizing: border-box; background: #0b0e12; color: #edf0f3; font-family: 'Inter Tight', system-ui, sans-serif; font-variant-numeric: tabular-nums; display: flex; flex-direction: column">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border-bottom: 1px solid #242b34">
+    <a href="#job" style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 8px; text-decoration: none; color: #edf0f3; font-size: 15px">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+      Job page
+    </a>
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #8b95a3; padding-right: 8px">3:42 PM</span>
+  </header>
+
+  <section style="padding: 32px 20px 28px; display: flex; flex-direction: column; gap: 12px">
+    <span aria-hidden="true" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid #f0a93a; display: flex; align-items: center; justify-content: center; margin-bottom: 6px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0a93a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+    </span>
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #f0a93a">Marked installed</span>
+    <h1 style="margin: 0; font-size: 30px; font-weight: 500; letter-spacing: -0.8px; line-height: 1.1">Take final pictures</h1>
+    <p style="margin: 0; font-size: 15px; line-height: 1.45; color: #8b95a3">Dana Whitfield · 1418 Linden Avenue</p>
+  </section>
+
+  <section style="padding: 0 20px 24px; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3">Photos · 2 added</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b95a3">optional, any amount</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+      <button type="button" style="aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: transparent; border: 1px dashed #3a424d; border-radius: 10px; color: #edf0f3; font-family: inherit; font-size: 13px; cursor: pointer">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+        Add photo
+      </button>
+      <div style="aspect-ratio: 1; display: flex; align-items: flex-end; padding: 8px; box-sizing: border-box; background: #12161c; border: 1px solid #242b34; border-radius: 10px">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8b95a3">PHOTO 01</span>
+      </div>
+      <div style="aspect-ratio: 1; display: flex; align-items: flex-end; padding: 8px; box-sizing: border-box; background: #12161c; border: 1px solid #242b34; border-radius: 10px">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8b95a3">PHOTO 02</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin: 0 20px; padding: 16px; background: #12161c; border: 1px solid #242b34; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #8b95a3">Check · $1,240.00</span>
+      <span style="font-size: 15px; font-weight: 500"><span data-check-status>Not collected yet</span></span>
+    </div>
+    <button type="button" data-check-btn style="min-height: 44px; padding: 0 14px; border-radius: 8px; border: 1px solid #74d68c; background: transparent; color: #edf0f3; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer"><span data-check-action>Mark collected</span></button>
+  </section>
+
+  <div style="margin-top: auto; padding: 20px 20px 30px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #242b34">
+    <a href="#job" style="display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 10px; background: #f0a93a; color: #1a1204; text-decoration: none; font-size: 17px; font-weight: 600">Done</a>
+    <a href="#job" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 10px; text-decoration: none; color: #8b95a3; font-size: 15px">Skip photos for now</a>
+  </div>
+
+</div>
+</section><section class="screen" id="v-flag" hidden>
+
+<div class="app" style=" box-sizing: border-box; background: #0b0e12; color: #edf0f3; font-family: 'Inter Tight', system-ui, sans-serif; display: flex; flex-direction: column">
+
+  <header style="display: flex; align-items: center; padding: 10px 12px; border-bottom: 1px solid #242b34">
+    <a href="#job" style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 8px; text-decoration: none; color: #edf0f3; font-size: 15px">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+      Job page
+    </a>
+  </header>
+
+  <section style="padding: 32px 20px 24px; display: flex; flex-direction: column; gap: 10px">
+    <span style="display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #f0a93a">
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"></path><path d="M5 4h11l-2 4 2 4H5"></path></svg>
+      Flag a problem
+    </span>
+    <h1 style="margin: 0; font-size: 30px; font-weight: 500; letter-spacing: -0.8px; line-height: 1.1">What went wrong?</h1>
+    <p style="margin: 0; font-size: 15px; line-height: 1.45; color: #8b95a3">Dana Whitfield · 1418 Linden Avenue</p>
+  </section>
+
+  <section style="padding: 0 20px; display: flex; flex-direction: column; gap: 10px">
+    <label for="flag-text" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8b95a3">Describe the problem</label>
+    <textarea id="flag-text" placeholder="e.g. One drawer front arrived chipped. Need a replacement and a return trip." style="height: 220px; box-sizing: border-box; padding: 16px; background: #12161c; border: 1px solid #242b34; border-radius: 10px; color: #edf0f3; font-family: inherit; font-size: 16px; line-height: 1.5; resize: none"></textarea>
+    <span style="font-size: 13px; line-height: 1.45; color: #8b95a3">Saved to the flagged problems list with this job attached.</span>
+  </section>
+
+  <div style="margin-top: auto; padding: 20px 20px 30px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #242b34">
+    <a href="#job" style="display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 10px; background: #f0a93a; color: #1a1204; text-decoration: none; font-size: 17px; font-weight: 600" data-submit-flag>Submit flag</a>
+    <a href="#job" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 10px; text-decoration: none; color: #8b95a3; font-size: 15px">Cancel</a>
+  </div>
+
+</div>
+</section>
+<section class="screen" id="v-plans" hidden><div class="app" style="background:var(--paper);color:var(--ink);display:flex;flex-direction:column">
+<header style="display:flex;align-items:center;padding:10px 12px;border-bottom:1px solid var(--rule)"><a href="#job" style="display:flex;align-items:center;gap:6px;min-height:44px;padding:0 8px;text-decoration:none;color:var(--ink);font-size:15px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>Job page</a></header>
+<div style="padding:32px 20px;display:flex;flex-direction:column;gap:12px">
+<span class="mono" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Blueprints and plans</span>
+<h1 style="margin:0;font-size:30px;font-weight:500;letter-spacing:-.8px">Dana Whitfield</h1>
+<p style="margin:0;color:var(--muted);font-size:15px;line-height:1.5">The job's drawings and plans open here. Nikki's design files will be attached to each job once that part of the CRM is planned.</p>
+<div style="margin-top:12px;aspect-ratio:3/4;max-width:100%;border:1px dashed #3a424d;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px" class="mono">PLAN SHEET</div>
+</div></div></section>
+<div class="toast" id="toast" role="status" hidden></div>
+<script>
+(function(){
+  var state = { installed:false, check:false };
+  var views = ['start','job','picker','calendar','complete','flag','plans'];
+  function show(){
+    var r = (location.hash || '#start').slice(1); if (views.indexOf(r) < 0) r = 'start';
+    views.forEach(function(v){ document.getElementById('v-'+v).hidden = v !== r; });
+    window.scrollTo(0,0);
+  }
+  function pill(el, on, onText, offText){
+    el.textContent = on ? onText : offText;
+    var wrap = el.parentElement; wrap.style.color = on ? '#edf0f3' : '#8b95a3'; wrap.style.borderColor = on ? '#3d6b4a' : '#242b34';
+    wrap.firstElementChild.style.background = on ? '#74d68c' : '#8b95a3';
+  }
+  function sync(){
+    document.querySelectorAll('[data-check-label]').forEach(function(e){ e.textContent = state.check ? 'Check collected' : 'Mark check collected';
+      var b = e.closest('button'); b.style.background = state.check ? '#1b2a20' : 'transparent'; b.style.borderColor = state.check ? '#74d68c' : '#3a424d'; });
+    document.querySelectorAll('[data-check-status]').forEach(function(e){ e.textContent = state.check ? 'Collected' : 'Not collected yet'; });
+    document.querySelectorAll('[data-check-action]').forEach(function(e){ e.textContent = state.check ? 'Undo' : 'Mark collected';
+      e.closest('button').style.borderColor = state.check ? '#3a424d' : '#74d68c'; });
+    document.querySelectorAll('[data-pill-install]').forEach(function(e){ pill(e, state.installed, 'Installed', 'Install pending'); });
+    document.querySelectorAll('[data-pill-check]').forEach(function(e){ pill(e, state.check, 'Check collected', 'Check pending'); });
+  }
+  var tt;
+  function toast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.hidden = false; clearTimeout(tt); tt = setTimeout(function(){ t.hidden = true; }, 2200); }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-check-btn]'); if (b) { state.check = !state.check; sync(); toast(state.check ? 'Check marked collected' : 'Check marked not collected'); return; }
+    if (e.target.closest('[data-install]')) { state.installed = true; sync(); }
+    if (e.target.closest('[data-submit-flag]')) { var ta = document.getElementById('flag-text'); var has = ta && ta.value.trim(); if (ta) ta.value = ''; toast(has ? 'Added to flagged problems' : 'Flag sent (demo)'); }
+    if (e.target.closest('#v-complete a') && /Done/.test(e.target.textContent)) { toast('Job marked installed'); }
+  });
+  window.addEventListener('hashchange', show);
+  sync(); show();
+})();
+</script>
+
+</body>
+</html>
